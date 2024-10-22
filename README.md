@@ -18,7 +18,6 @@ Pandas: For data manipulation and analysis.
 your_root_directory/
 │
 ├── .gitignore
-├── airline-438510-25841398e32c.json    # Google Cloud credentials
 ├── app.py                              # Main application script
 ├── config.py                           # Taipy configuration
 ├── dashboard.py                        # Taipy dashboard setup
@@ -27,21 +26,15 @@ your_root_directory/
 ├── main.py                             # Entry point for the app
 ├── README.md                           # Project README
 ├── requirements.txt                    # Python dependencies
-├── .vscode/                            # VSCode settings
-│   └── settings.json
 ├── data/                               # Data-related files
 │   ├── airline_data.parquet            # Airline data in parquet
 │   ├── datamaker.py                    # Data generation/cleaning script
 │   ├── data_processing.py              # Data processing script
 │   ├── dbt_project.yml                 # dbt project configuration
 │   └── models/                         # dbt SQL models
-│       ├── rating.sql                  # Airline rating model
-│       └── top5.sql                    # Top 5 airlines model
 ├── pages/                              # Dashboard page layout
 │   ├── marketing_page.py               # Marketing metrics page
 │   └── overview_page.py                # Overview metrics page
-└── utils/                              # Utility scripts
-    └── plots.py                        # Plotting functions for charts
 
 
 ```
