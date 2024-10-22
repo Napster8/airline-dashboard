@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-bigquery:latest
+    volumes:
+      - ./:/dbt
+    working_dir: /dbt
+  taipy:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: python app.py

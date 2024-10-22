@@ -1,0 +1,92 @@
+# Python-specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+*.eggs/
+*.log
+*.pot
+*.pyc
+*.pyo
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.coverage
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+venv.bak/
+
+# Taipy/Streamlit temporary files
+.taipy/
+*.db
+*.tmp
+
+# BigQuery-related
+.airline-438510-*.json 
+*.log
+.bigquery/
+
+# DBT files
+dbt_modules/
+dbt_packages/
+target/
+manifest.json
+run_results.json
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+.idea/
+
+# macOS
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Ignore virtual environment files
+.env
+
+# my notes
+.notes

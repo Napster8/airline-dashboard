@@ -1,0 +1,9 @@
+taipy
+pandas
+google-cloud-bigquery
+google-cloud-bigquery-storage # 
+dbt-core
+dbt-bigquery
+duckdb
+pyarrow
+db-dtypes

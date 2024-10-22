@@ -1,0 +1,179 @@
+# light and dark mode: maybe place this in utils/
+
+light_theme = {
+    "palette": {
+        "background": {
+            "default": "#d580ff"  
+        },
+        "primary": {"main": "#ffffff"}
+    }
+}
+
+dark_theme = {
+    "palette": {
+        "background": {
+            "default": "#471061"  
+        },
+        "primary": {"main": "#000000"}
+    }
+}
+
+# Navbar and Darkmode
+
+<br/>
+<|layout|columns=1fr auto 1fr|class_name=container align_columns_center|
+<|part|
+**<|SoccerStatusTech|text|height=50px|width=50px|style="font-size: 50px;"|>**
+|>
+<|part|class_name=align_item_stretch|
+<|navbar|class_name=fullheight|>
+|>
+<|part|class_name=text_right|
+<|toggle|theme|>
+|>
+|>
+
+# Drop down, cards and buttons
+
+<|text-center|
+<br/>
+<|card|
+<h3>Choose your team</h3>
+<|layout|gap=10px|class_name=container align_center|
+<center>
+<|{value1}|selector|lov=Arsenal;Aston Villa;Bournemouth;Brentford;Burnley;Wolverhampton;Brighton Hove;Chelsea;Crystal Palace;Everton;Fulham;Liverpool;Luton Town;Man City;Man United;Newcastle;Nottingham;Sheffield Utd;Tottenham;West Ham|dropdown|label=Team 1|>
+</center>
+
+<center>
+<|{value2}|selector|lov=Arsenal;Aston Villa;Bournemouth;Brentford;Burnley;Wolverhampton;Brighton Hove;Chelsea;Crystal Palace;Everton;Fulham;Liverpool;Luton Town;Man City;Man United;Newcastle;Nottingham;Sheffield Utd;Tottenham;West Ham|dropdown|label=Team 2|>
+</center>
+|>
+<|Generate|button|on_action=button_pressed|class_name=button|
+|>
+
+
+# Graphs. charts and toggles
+
+
+<|part|render={showToggles}|
+<center>
+<|{selected_team}|toggle|lov={values}|on_change=toggle_choice|>
+</center>
+|>
+<br/>
+<|layout|column=1 1|
+<|part|render={showGraphs}|
+<|{data}|chart|type=pie|values=Count|labels=Country|title=Percentage of Players by Nationality|>
+|>
+<|part|render={showGraphs}|
+<|{dataframe}|chart|type=bar|x=Season|y[1]=W|y[2]=L|layout={layout}|>
+|>
+|>
+<|part|render={showGraphs}|
+<|{allFrame}|chart|mode=lines|x=Season|y[1]=Goals Scored|y[2]=Goals Conceded|y[3]=Points|>
+|>
+
+# States
+
+State is how you get the information from the user interactions on the frontend. When creating a function for an on_change the function has a parameter called state allowing you to access inputs or modifying values.
+
+layout = {
+    "yaxis": {
+      "side": "left",
+      "title": "Games"
+    },
+    "title": {
+        "text" : "Win vs Losses Throughout the Season(s)"
+    }
+}
+
+dataframe = {"Season":[], "W":[], "L":[]}
+allFrame = {"Season":[], "Goals Scored":[], "Goals Conceded":[], "Points":[]}
+
+data = {"Country":[], "Count":[]}
+logo = ''
+selected_team = ''
+def toggle_choice(state):
+
+    state.logo, countries = nationalityChart(state.selected_team, state.response) 
+
+    state.data = {
+        "Country": list(countries.keys()),
+        "Count": list(countries.values())
+    }
+
+    state.dataframe = df[df['Team']==state.selected_team].copy()
+    state.allFrame = df[df['Team']==state.selected_team].copy()
+    state.showGraphs = True
+
+
+
+
+
+# Finally main()
+
+from taipy.gui import Gui
+from taipy import config
+import taipy as tp
+
+from pages.home.home import home_md
+from pages.prediction.predictions import predictions_md
+from pages.charts.charts import charts_md
+from pages.root import root
+
+import requests
+
+API_URL = "http://api.football-data.org/v4/competitions/PL/teams"
+headers = { 'X-Auth-Token': 'bafc651292bf4fda9539e3a88814cb9e' }
+response = requests.get(API_URL, headers=headers)
+
+pages = {
+    '/':root,
+    'home':home_md,
+    "statistics":charts_md,
+    "predictions":predictions_md,
+}
+
+light_theme = {
+    "palette": {
+        "background": {
+            "default": "#d580ff"  
+        },
+        "primary": {"main": "#ffffff"}
+    }
+}
+
+dark_theme = {
+    "palette": {
+        "background": {
+            "default": "#471061"  
+        },
+        "primary": {"main": "#000000"}
+    }
+}
+
+card = {
+    "palette": {
+        "background": {
+            "default": "#471061"  
+        },
+        "primary": {"main": "#000000"}
+    }
+}
+
+value1="select a team"
+value2="select a team"
+
+showToggles = False
+
+app = Gui(pages=pages)
+
+values = ['team1','team2']
+
+Gui.add_shared_variables(values, showToggles, response)
+
+if __name__ == '__main__':
+    tp.Core().run()
+    
+    app.run(title="SoccerStatusTech", use_reloader=True, port=3636, light_theme=light_theme, dark_theme=dark_theme)
+
