@@ -15,26 +15,25 @@ Pandas: For data manipulation and analysis.
 ## Directory Structure
 
 ```bash
-your_root_directory/
-│
-├── .gitignore
-├── app.py                              # Main application script
-├── config.py                           # Taipy configuration
-├── dashboard.py                        # Taipy dashboard setup
-├── docker-compose.yml                  # Docker Compose setup
-├── Dockerfile                          # Dockerfile for container
-├── main.py                             # Entry point for the app
-├── README.md                           # Project README
-├── requirements.txt                    # Python dependencies
-├── data/                               # Data-related files
-│   ├── airline_data.parquet            # Airline data in parquet
-│   ├── datamaker.py                    # Data generation/cleaning script
-│   ├── data_processing.py              # Data processing script
-│   ├── dbt_project.yml                 # dbt project configuration
-│   └── models/                         # dbt SQL models
-├── pages/                              # Dashboard page layout
-│   ├── marketing_page.py               # Marketing metrics page
-│   └── overview_page.py                # Overview metrics page
+root/
+├── .gitignore                     # Specifies files and directories to be ignored by Git
+├── app.py                         # Main application script
+├── config.py                      # Configuration settings for the project
+├── dbt_project.yml                # Configuration file for the dbt (data build tool) project
+├── docker-compose.yml             # Defines Docker services for multi-container Docker applications
+├── Dockerfile                     # Docker setup for containerizing the application
+├── README.md                      # Project overview and setup instructions
+├── requirements.txt               # Python dependencies for the project
+├── .vscode/                       # IDE settings for Visual Studio Code
+│   └── settings.json              # VSCode-specific settings
+├── data/                          # Directory for datasets, logs, and scripts
+│   ├── datamaker.py               # Script to generate data
+│   ├── data_processing.py         # Script for processing the data
+├── models/                        # SQL models for various business insights
+│   ├── average_airline_rating_by_year.sql  # SQL model for calculating average airline ratings by year
+│   ├── monthly_profit_trends.sql  # SQL model for tracking monthly profit trends
+│   └── revenue_breakdown_by_class_type.sql # SQL model for breaking down revenue by class type
+└── merged_output.txt              # Output file for merged results
 
 
 ```
