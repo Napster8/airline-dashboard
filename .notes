@@ -1,0 +1,33 @@
+# to edit profiles.yml file
+code $env:USERPROFILE\.dbt\profiles.yml
+
+# bq ls to list all datasets in the project
+bq ls --project_id=airline-438510 airlines
+
+# docker logs <docker_container_id>
+docker logs 
+
+# view logs of the most recent container
+docker logs $(docker ps -l -q)
+docker logs -f $(docker ps -l -q) # monitor in real time
+
+# docker build and run
+docker build -t taipy_dbt_app . | tee build.log
+docker run -d -p 5000:5000 taipy_dbt_app
+
+# instead of killtask and picking the current running id and killing it and re-exposing what can i do?
+powershell -ExecutionPolicy Bypass -File .\restart.ps1
+
+# Remove all the containers -f: force, ps: list all containers, -aq: select all containers
+docker rm -f $(docker ps -aq)
+
+# ipv5 address
+ipconfig | findstr /i "ipv4"
+   IPv4 Address. . . . . . . . . . . : 192.168.29.68
+   IPv4 Address. . . . . . . . . . . : 172.18.48.1
+
+❯ docker ps
+
+# bq ls --project_id airline-438510 airlines # list all datasets in the project
+
+# bq ls 

@@ -2,7 +2,6 @@ from taipy import Gui
 from pages.overview_page.overview_page import Overview
 from pages.marketing_page.marketing_page import Marketing
 from data.data_processing import setup_bigquery_client, run_dbt
-from navbar import nav_bar # import the Top Navigation Bar
 
 setup_bigquery_client()
 #run_dbt()

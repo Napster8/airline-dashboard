@@ -34,14 +34,6 @@ for city in range(len(arrival_cities)):
         layout["annotations"].append(annotation)
 
 
-# Edits for o5
-# Melt the o5 DataFrame to convert the year columns into a single column
-o5_melted = pd.melt(o5, 
-                    id_vars=["airline_name", "trend"], 
-                    value_vars=["_2021", "_2022", "_2023"], 
-                    var_name="year", 
-                    value_name="Rating")
-
 # Create the Markdown content
 Overview = Markdown("""
 <center>
@@ -85,9 +77,5 @@ This page provides an overview of key airline performance metrics.
 
 ## Average Airline Rating by Year
 <|{o5}|table|>
-## Average Airline Rating by Year
-
-<|{o5_melted}|table|>
-<|{o5_melted}|chart|mode=lines|x=year|y=Rating|color=airline_name|title="Airline Ratings from 2021 to 2023"|>
 
 """)

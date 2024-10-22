@@ -13,7 +13,6 @@ Marketing = Markdown("""
 <center>
     <|navbar|lov={[('/overview', 'Overview'), ('/marketing', 'Marketing')]}|>
 </center>
-
                      
 # Marketing Page
 
