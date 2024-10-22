@@ -33,6 +33,7 @@ root/
 │   ├── average_airline_rating_by_year.sql  # SQL model for calculating average airline ratings by year
 │   ├── monthly_profit_trends.sql  # SQL model for tracking monthly profit trends
 │   └── revenue_breakdown_by_class_type.sql # SQL model for breaking down revenue by class type
+........(see full in visualization plan)
 └── merged_output.txt              # Output file for merged results
 
 
